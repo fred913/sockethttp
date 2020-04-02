@@ -1,6 +1,6 @@
 Metadata-Version: 1.2
 Name: sockethttp
-Version: 1.1b53
+Version: 1.2
 Summary: faster http/1.1 client than requests
 Home-page: https://github.com/fred913/sockethttp
 Author: Sheng Fan
