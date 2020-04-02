@@ -1,5 +1,5 @@
 # sockethttp
- A faster http/1.1 client than requests.
+ A lightweight http/1.1 client.
 
 ### Requirements:
 
@@ -19,12 +19,12 @@
  - Lightweight HTTP request system
  - Easy-to-use extension mechanism
  
-
     Still under development... 
 
 ### Plugin development
 
  - [Plugin Demo](https://github.com/fred913/sockethttp-ext-demo/)
+ - [Plugin development documentation](https://github.com/fred913/sockethttp-ext-demo/README.md)
  
  ### In case of the following situations, submit a pull request or issue:
  - Bugs that can cause fatal errors
