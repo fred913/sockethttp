@@ -1,4 +1,5 @@
 # coding: utf-8
 
-from . import get
-__version__ = "1.01"
+from .get import get
+from .request import request
+__version__ = "1.01b00053"

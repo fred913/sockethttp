@@ -1,0 +1,14 @@
+{
+    "extname": "HTTP method support: Options",
+    "extfiles": {
+        "a": [
+            [
+                "./a.json",
+                "r"
+            ],
+            {
+                "encoding": "utf-8"
+            }
+        ]
+    }
+}

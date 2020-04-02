@@ -1,5 +1,6 @@
 setup.py
 sockethttp/__init__.py
+sockethttp/extension.py
 sockethttp/get.py
 sockethttp/post.py
 sockethttp/request.py

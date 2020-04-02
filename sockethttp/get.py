@@ -1,9 +1,9 @@
 # coding: utf-8
 
-from .request import request, Request, Response
+from .request import request, Response
 
 
-def get(url: str, params=None, headers=None, UserAgent=None, timeout=5):
+def get(url, params=None, headers=None, UserAgent=None, timeout=5):
     if params is None:
         params = {}
     if headers is None:

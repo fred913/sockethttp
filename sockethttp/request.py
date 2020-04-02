@@ -2,10 +2,9 @@
 # coding: utf-8
 
 import socket
-import sys
 import re
 from urllib import parse
-import zlib
+# import zlib  # will use in future version.
 import json
 
 newline = "\n"
@@ -29,7 +28,7 @@ class _callable_str(str):
 
 
 class Request:
-    def __init__(self, data: dict):
+    def __init__(self, data):
         self._data = data
 
     def __getattr__(self, key):
@@ -81,8 +80,7 @@ class Response:
 
     @property
     def headers(self):
-        result = {}
-        resp = self._response_data.split("\n")[1:]
+        resp = self._response_data.split(b"\n")[1:]
         head_str = []
         for i in resp:
             if i.strip():
@@ -127,23 +125,33 @@ def request(host,
     if params is not {}:
         if "?" not in uri:
             uri += "?"
-        elif uri.endswith("?"):
+        if uri.endswith("?"):
             uri += parse.urlencode(params)
         else:
             uri += "&" + parse.urlencode(params)
+    if "?" in url:
+        params = url.split("?", maxsplit=2)[1]
+        params = parse.unquote(params)
+        url = url.split("?", maxsplit=2)[0]
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    data = f"""{method.strip().upper()} {uri} HTTP/1.1
-Host: {host}{"" if port in [443, 80] else (":" + str(port))}
-User-Agent: {UserAgent if UserAgent else "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0"}
+    data = """{} {} HTTP/1.1
+Host: {}{}
+User-Agent: {}
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
 Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
 Accept-Encoding: gzip, deflate
 Connection: close
 Pragma: no-cache
 Cache-Control: no-cache
-{newline.join(["%s: %s" % (k, headers[k]) for k in headers])}
-{body}
-""".encode()
+{}
+
+{}
+""".format(method.strip().upper(), uri, (host), (
+        "" if port in [443, 80] else (":" + str(port))
+    ), (UserAgent if UserAgent else
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0"
+        ), (newline.join(["%s: %s" % (k, headers[k]) for k in headers])),
+           (body)).encode()
     s.connect((socket.gethostbyname(host) if not isIP(host) else host, port))
     s.sendall(data)
     try:
@@ -152,7 +160,3 @@ Cache-Control: no-cache
         raise TimeoutError("Time out on receiving data")
     s.close()
     return data
-
-
-if __name__ == "__main__":
-    print(get("http://www.baidu.com").text)

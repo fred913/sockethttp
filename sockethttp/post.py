@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from .request import request, Request, Response
+from .request import request, Response
 
 
 def post(url: str,
