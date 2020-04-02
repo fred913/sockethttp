@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: sockethttp
+Version: 1.1
+Summary: the faster http/1.1 client than requests
+Home-page: https://github.com/fred913/sockethttp
+Author: Sheng Fan
+Author-email: 1175882937@qq.com
+License: GPL-2.0
+Description: The faster http/1.1 client than requests.Supported methods: GET and POST
+Platform: any

@@ -1,0 +1,9 @@
+setup.py
+sockethttp/__init__.py
+sockethttp/get.py
+sockethttp/post.py
+sockethttp/request.py
+sockethttp.egg-info/PKG-INFO
+sockethttp.egg-info/SOURCES.txt
+sockethttp.egg-info/dependency_links.txt
+sockethttp.egg-info/top_level.txt
