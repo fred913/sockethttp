@@ -1,5 +1,7 @@
 {
     "extname": "Ajax API: send any HTTP GET/POST request in browser JavaScript (without any Chrome extensions)",
-    "requires": [],
+    "requires": [
+        "flask"
+    ],
     "extfiles": {}
 }

@@ -9,6 +9,14 @@ from os.path import abspath, join, dirname
 from io import open
 from json import load as load_json
 from .__init__ import __version__
+from pip._internal import main
+import importlib
+
+
+def missing_module(module_name):
+    print("Required module %s not detected, installing with pip..." %
+          (module_name, ))
+    main.main(["install", module_name])
 
 
 def load_extension(extension_name):
@@ -25,6 +33,12 @@ def load_extension(extension_name):
         "get": get,
         "post": post
     }
+    for i in extension_info['requires']:
+        try:
+            globals_env[i] = importlib.import_module(i)
+        except ImportError:
+            missing_module(i)
+            globals_env[i] = importlib.import_module(i)
     for i in extension_info["extfiles"]:
         globals_env[i] = open(
             join(dirname(__file__), "extensions", extension_name,
