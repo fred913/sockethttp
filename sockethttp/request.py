@@ -6,6 +6,7 @@ import re
 from urllib import parse
 # import zlib  # will use in future version.
 import json
+from gzip import decompress
 
 newline = "\n"
 
@@ -122,6 +123,7 @@ def request(host,
             https=False):
     if https:
         raise ValueError("Unsupported procotol: https")
+    # raw_header =
     if params is not {}:
         if "?" not in uri:
             uri += "?"
@@ -129,7 +131,7 @@ def request(host,
             uri += parse.urlencode(params)
         else:
             uri += "&" + parse.urlencode(params)
-    if "?" in url:
+    elif "?" in uri:
         params = url.split("?", maxsplit=2)[1]
         params = parse.unquote(params)
         url = url.split("?", maxsplit=2)[0]
@@ -139,7 +141,7 @@ Host: {}{}
 User-Agent: {}
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
 Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
-Accept-Encoding: gzip, deflate
+Accept-Encoding: deflate
 Connection: close
 Pragma: no-cache
 Cache-Control: no-cache

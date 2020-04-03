@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from .request import request, Response
+from urllib import parse
 
 
 def post(url: str,
@@ -42,7 +43,8 @@ def post(url: str,
                    headers=headers,
                    UserAgent=UserAgent,
                    https=full_url.startswith("https://"),
-                   timeout=timeout)
+                   timeout=timeout,
+                   body=parse.urlencode(data))
     return Response(
         resp, {
             'url': full_url,

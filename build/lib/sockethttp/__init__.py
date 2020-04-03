@@ -2,4 +2,4 @@
 
 from .get import get
 from .request import request
-__version__ = "1.2.1"
+__version__ = "1.2.2"
