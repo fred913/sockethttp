@@ -1,12 +1,15 @@
 Metadata-Version: 1.2
 Name: sockethttp
-Version: 1.2.2
-Summary: faster http/1.1 client than requests
+Version: 1.2.4
+Summary: a lightweight http/1.1 client.
 Home-page: https://github.com/fred913/sockethttp
 Author: Sheng Fan
 Author-email: 1175882937@qq.com
 License: GPL-2.0
-Description: faster http/1.1 client than requests. 
+Description: a lightweight http/1.1 client. 
+        
+        
         Supported methods: GET and POST
 Platform: any
+Requires: pip
 Requires-Python: >=2.7

@@ -27,13 +27,14 @@ for dirpath, dirnames, filenames in os.walk(name):
 
 setup(name=name,
       version=__version__,
-      description='faster http/1.1 client than requests',
+      description='a lightweight http/1.1 client.',
       author='Sheng Fan',
       author_email='1175882937@qq.com',
       url='https://github.com/fred913/sockethttp',
       packages=['sockethttp'],
-      long_description="faster http/1.1 client than requests. \n"
+      long_description="a lightweight http/1.1 client. \n\n\n"
       "Supported methods: GET and POST",
       license="GPL-2.0",
       platforms=["any"],
+      requires=["pip"],
       python_requires=">=2.7")
