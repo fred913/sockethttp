@@ -4,13 +4,15 @@ try:
     from setuptools import setup
 except BaseException:
     from distutils import setup
-from sockethttp import __version__
 import os
 import platform
 
+from sockethttp import __version__
+
 if str(platform.python_version()).startswith("2.7"):
     print(
-        "Warning: sockethttp has not been tested on this Python version, which may cause bugs"
+        "Warning: sockethttp has not been tested on this Python version, "
+        "which may cause bugs"
     )
 
 name = "sockethttp"

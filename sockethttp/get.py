@@ -1,6 +1,7 @@
 # coding: utf-8
 
-from .request import request, Response
+from .request import Response
+from .request import request
 
 
 def get(url, params=None, headers=None, UserAgent=None, timeout=5):
@@ -44,6 +45,7 @@ def get(url, params=None, headers=None, UserAgent=None, timeout=5):
             'params': params,
             'method': "get",
             'UserAgent': UserAgent or
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) "
+            "Gecko/20100101 Firefox/75.0",
             "https": full_url.startswith("https://")
         })
